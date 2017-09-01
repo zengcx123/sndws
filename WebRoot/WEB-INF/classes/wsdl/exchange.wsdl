@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.sndws.oceansoft.com"
+	xmlns:soapenc12="http://www.w3.org/2003/05/soap-encoding" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:ns5="http://reflect.lang.java" xmlns:ns6="http://dom4j.org"
+	xmlns:ns7="http://sax.xml.org" xmlns:ns8="http://parsers.xml.javax"
+	xmlns:ns2="http://base.entity.sndws.oceansoft.com" xmlns:ns1="http://lang.java"
+	xmlns:ns4="http://io.java" xmlns:ns3="http://beans.java" xmlns:tns="http://ws.sndws.oceansoft.com"
+	xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			attributeFormDefault="qualified" elementFormDefault="qualified"
+			targetNamespace="http://ws.sndws.oceansoft.com">
+			<xsd:element name="send">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="1" minOccurs="1" name="dataXml"
+							nillable="true" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="sendResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="1" minOccurs="1" name="out"
+							nillable="true" type="ns2:Result" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="IntrospectionException" type="ns3:IntrospectionException" />
+			<xsd:element name="IllegalArgumentException" type="ns1:IllegalArgumentException" />
+			<xsd:element name="IOException" type="ns4:IOException" />
+			<xsd:element name="InvocationTargetException" type="ns5:InvocationTargetException" />
+			<xsd:element name="DocumentException" type="ns6:DocumentException" />
+			<xsd:element name="SAXException" type="ns7:SAXException" />
+			<xsd:element name="ParserConfigurationException" type="ns8:ParserConfigurationException" />
+			<xsd:element name="IllegalAccessException" type="ns1:IllegalAccessException" />
+		</xsd:schema>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			attributeFormDefault="qualified" elementFormDefault="qualified"
+			targetNamespace="http://base.entity.sndws.oceansoft.com">
+			<xsd:complexType name="Result">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" name="exception" nillable="true"
+						type="ns1:Throwable" />
+					<xsd:element minOccurs="0" name="id" nillable="true"
+						type="xsd:string" />
+					<xsd:element minOccurs="0" name="msg" nillable="true"
+						type="xsd:string" />
+					<xsd:element minOccurs="0" name="status" type="xsd:int" />
+					<xsd:element minOccurs="0" name="time" type="xsd:dateTime" />
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			attributeFormDefault="qualified" elementFormDefault="qualified"
+			targetNamespace="http://lang.java">
+			<xsd:complexType name="Throwable" />
+			<xsd:complexType name="IllegalArgumentException" />
+			<xsd:complexType name="Exception" />
+			<xsd:complexType name="IllegalAccessException" />
+		</xsd:schema>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			attributeFormDefault="qualified" elementFormDefault="qualified"
+			targetNamespace="http://beans.java">
+			<xsd:complexType name="IntrospectionException" />
+		</xsd:schema>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			attributeFormDefault="qualified" elementFormDefault="qualified"
+			targetNamespace="http://io.java">
+			<xsd:complexType name="IOException" />
+		</xsd:schema>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			attributeFormDefault="qualified" elementFormDefault="qualified"
+			targetNamespace="http://reflect.lang.java">
+			<xsd:complexType name="InvocationTargetException">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" name="cause" nillable="true"
+						type="ns1:Throwable" />
+					<xsd:element minOccurs="0" name="targetException"
+						nillable="true" type="ns1:Throwable" />
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			attributeFormDefault="qualified" elementFormDefault="qualified"
+			targetNamespace="http://dom4j.org">
+			<xsd:complexType name="DocumentException">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" name="message" nillable="true"
+						type="xsd:string" />
+					<xsd:element minOccurs="0" name="nestedException"
+						nillable="true" type="ns1:Throwable" />
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			attributeFormDefault="qualified" elementFormDefault="qualified"
+			targetNamespace="http://sax.xml.org">
+			<xsd:complexType name="SAXException">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" name="exception" nillable="true"
+						type="ns1:Exception" />
+					<xsd:element minOccurs="0" name="message" nillable="true"
+						type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			attributeFormDefault="qualified" elementFormDefault="qualified"
+			targetNamespace="http://parsers.xml.javax">
+			<xsd:complexType name="ParserConfigurationException" />
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="IllegalAccessException">
+		<wsdl:part name="IllegalAccessException" element="tns:IllegalAccessException">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ParserConfigurationException">
+		<wsdl:part name="ParserConfigurationException" element="tns:ParserConfigurationException">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="sendResponse">
+		<wsdl:part name="parameters" element="tns:sendResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="DocumentException">
+		<wsdl:part name="DocumentException" element="tns:DocumentException">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="InvocationTargetException">
+		<wsdl:part name="InvocationTargetException" element="tns:InvocationTargetException">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="IOException">
+		<wsdl:part name="IOException" element="tns:IOException">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="SAXException">
+		<wsdl:part name="SAXException" element="tns:SAXException">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="sendRequest">
+		<wsdl:part name="parameters" element="tns:send">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="IntrospectionException">
+		<wsdl:part name="IntrospectionException" element="tns:IntrospectionException">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="IllegalArgumentException">
+		<wsdl:part name="IllegalArgumentException" element="tns:IllegalArgumentException">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="exchangePortType">
+		<wsdl:operation name="send">
+			<wsdl:input name="sendRequest" message="tns:sendRequest">
+			</wsdl:input>
+			<wsdl:output name="sendResponse" message="tns:sendResponse">
+			</wsdl:output>
+			<wsdl:fault name="IntrospectionException" message="tns:IntrospectionException">
+			</wsdl:fault>
+			<wsdl:fault name="IllegalArgumentException" message="tns:IllegalArgumentException">
+			</wsdl:fault>
+			<wsdl:fault name="InvocationTargetException" message="tns:InvocationTargetException">
+			</wsdl:fault>
+			<wsdl:fault name="IOException" message="tns:IOException">
+			</wsdl:fault>
+			<wsdl:fault name="DocumentException" message="tns:DocumentException">
+			</wsdl:fault>
+			<wsdl:fault name="SAXException" message="tns:SAXException">
+			</wsdl:fault>
+			<wsdl:fault name="IllegalAccessException" message="tns:IllegalAccessException">
+			</wsdl:fault>
+			<wsdl:fault name="ParserConfigurationException" message="tns:ParserConfigurationException">
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="exchangeHttpBinding" type="tns:exchangePortType">
+		<wsdlsoap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="send">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="sendRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="sendResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="IntrospectionException">
+				<wsdlsoap:fault name="IntrospectionException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="IllegalArgumentException">
+				<wsdlsoap:fault name="IllegalArgumentException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="IOException">
+				<wsdlsoap:fault name="IOException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="InvocationTargetException">
+				<wsdlsoap:fault name="InvocationTargetException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="DocumentException">
+				<wsdlsoap:fault name="DocumentException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="SAXException">
+				<wsdlsoap:fault name="SAXException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="ParserConfigurationException">
+				<wsdlsoap:fault name="ParserConfigurationException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="IllegalAccessException">
+				<wsdlsoap:fault name="IllegalAccessException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="exchange">
+		<wsdl:port name="exchangeHttpPort" binding="tns:exchangeHttpBinding">
+			<wsdlsoap:address location="http://localhost:8080/sndws/services/exchange" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

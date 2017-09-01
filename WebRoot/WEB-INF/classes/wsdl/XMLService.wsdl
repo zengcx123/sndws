@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://service.xml.cons.com" xmlns:soapenc12="http://www.w3.org/2003/05/soap-encoding" xmlns:tns="http://service.xml.cons.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
+  <wsdl:types>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://service.xml.cons.com">
+<xsd:element name="sendXml">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="in0" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="sendXmlResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" type="xsd:boolean"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="sendXmlRequest">
+    <wsdl:part name="parameters" element="tns:sendXml">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendXmlResponse">
+    <wsdl:part name="parameters" element="tns:sendXmlResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="XMLServicePortType">
+    <wsdl:operation name="sendXml">
+      <wsdl:input name="sendXmlRequest" message="tns:sendXmlRequest">
+    </wsdl:input>
+      <wsdl:output name="sendXmlResponse" message="tns:sendXmlResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="XMLServiceHttpBinding" type="tns:XMLServicePortType">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="sendXml">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="sendXmlRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sendXmlResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="XMLService">
+    <wsdl:port name="XMLServiceHttpPort" binding="tns:XMLServiceHttpBinding">
+      <wsdlsoap:address location="http://218.4.157.244:8443/receiveXMLWebservice/service/XMLService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
